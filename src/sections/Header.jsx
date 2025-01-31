@@ -21,6 +21,7 @@ const Header = () => {
         damping: 30,
         restDelta: 0.001
     });
+    console.log(isNavOpen)
 
     // Добавляем обработчик кликов вне nav
     useEffect(() => {
@@ -139,7 +140,7 @@ const Header = () => {
                     {isNavOpen && (
                         <motion.nav
                             ref={navRef}
-                            className="w-full bg-bg bg-opacity-95 pt-8 flex flex-col absolute lg:top-[74px] top-[234px] left-0"
+                            className="w-full bg-bg bg-opacity-95 pt-8 flex flex-col absolute lg:top-[74px] top-[234px] left-0 z-30"
                             initial={{ y: -25, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
                             transition={{ duration: 0.5 }}

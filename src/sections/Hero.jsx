@@ -15,7 +15,7 @@ const Hero = () => {
     }
 
     return (
-        <section className="w-full bg-bg font-bold relative flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8">
+        <section className="w-full bg-bg font-bold relative flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8 z-20">
             <AnimatedModel name={"code"} fov={20} camz={10} scale={scale} />
             <div className="relative z-10"> {/* Wrapper for content to be above the model */}
                 <Typewriter className="lg:text-[56px] text-[36px] text-primary max-w-[800px]">
