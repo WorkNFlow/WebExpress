@@ -77,16 +77,16 @@ const BlogPost = () => {
     };
 
     return (
-        <section className="bg-bg px-16 py-20 lg:pt-32">
+        <section className="bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-32">
             <div className="max-w-[1536px] mx-auto">
                 <div className={"flex flex-col items-center justify-center mb-8 relative"}>
-                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-7"} to={"/blogs"}>
+                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"} to={"/blogs"}>
                         <MdKeyboardArrowLeft className={"text-2xl mb-[1px]"}/>
                         Назад
                     </Link>
                     <div className={"h-7 p-7"}/>
                     {postData.frontmatter && (
-                        <h1 className="text-4xl text-center text-primary font-bold">
+                        <h1 className="lg:text-4xl text-3xl text-center text-primary font-bold">
                             {postData.frontmatter.title}
                         </h1>
                     )}
