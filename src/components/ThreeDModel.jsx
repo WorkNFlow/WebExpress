@@ -42,7 +42,7 @@ const ThreeDModel = ({name, fov=75, camz=5, scale=3}) => {
         const loader = new GLTFLoader();
         try {
             loader.load(
-                `/public/models/${name}.glb`,
+                `/models/${name}.glb`,
                 (gltf) => {
                     const model = gltf.scene;
 
