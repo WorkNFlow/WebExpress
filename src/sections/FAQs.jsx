@@ -23,7 +23,7 @@ const FAQs = () => {
 
     return (
         <section
-            className="bg-bg w-full px-16 py-20 flex justify-center items-center">
+            className="bg-bg w-full lg:px-16 md:px-12 px-8 py-20 flex justify-center items-center">
             <motion.div className="w-full max-w-[1536px]"
                         initial="hidden"
                         whileInView="visible"

@@ -3,7 +3,7 @@ import Typewriter from "../components/TypeWriter.jsx";
 
 const Hero = () => {
     return (
-        <section className={"w-full bg-bg font-bold flex flex-col items-center justify-center text-center h-screen px-16"}>
+        <section className={"w-full bg-bg font-bold flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8"}>
             <Typewriter className={"lg:text-[56px] text-[48px] text-primary max-w-[800px]"}>
                 Достигаем целей вместе
             </Typewriter>

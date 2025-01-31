@@ -30,7 +30,7 @@ const HowItWorks = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className={"w-full bg-bg px-16 py-10 flex items-center justify-center"}>
+        <section ref={sectionRef} className={"w-full bg-bg lg:px-16 md:px-12 px-8 py-10 flex items-center justify-center"}>
             {isVisible && (
                 <div className={"w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-40 max-w-[1536px] items-center"}>
                     {CardsInfo.map((item, index) => (

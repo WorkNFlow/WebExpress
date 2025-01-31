@@ -111,7 +111,7 @@ const Header = () => {
                     </motion.div>
 
                     <motion.div
-                        className="flex flex-col lg:flex-row items-end lg:items-center max-lg:gap-4 w-full max-w-[400px] justify-between"
+                        className="flex flex-col lg:flex-row lg:items-center items-end max-lg:gap-10 w-full max-w-[400px] justify-between"
                         initial="hidden"
                         animate="visible"
                         variants={{

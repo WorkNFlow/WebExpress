@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const WhyUs = () => {
     return (
-        <section className={"w-full bg-bg px-16 py-10 flex flex-col md:flex-row xl:flex-col items-center gap-8"}>
+        <section className={"w-full bg-bg lg:px-16 md:px-12 px-8 py-10 flex flex-col md:flex-row xl:flex-col items-center gap-8"}>
             <div className={"flex flex-col items-center gap-6"}>
                 <h2 className={"text-5xl font-bold text-center"}>
                     Почему выбирают нас?
