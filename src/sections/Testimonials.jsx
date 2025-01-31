@@ -124,8 +124,8 @@ const Testimonials = () => {
     return (
         <section id="testimonials" className="w-full overflow-hidden bg-bg lg:px-16 md:px-12 px-8 lg:py-20 py-10">
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
-                <div className="flex flex-col items-center mb-20">
-                    <h2 className="text-primary font-bold text-5xl mb-6">
+                <div className="flex flex-col items-center lg:mb-20 mb-10">
+                    <h2 className="text-primary font-bold lg:text-5xl text-4xl lg:mb-6 mb-2">
                         Отзывы
                     </h2>
                     <p className="font-normal text-[#aaaaaa]">
@@ -205,7 +205,7 @@ const Testimonials = () => {
                         <div className="md:hidden w-full">
                             <div
                                 ref={scrollContainerRef}
-                                className="flex w-full overflow-x-auto snap-x snap-mandatory scrollbar-none"
+                                className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-container"
                                 style={{ WebkitOverflowScrolling: 'touch' }}
                             >
                                 <div className="flex w-full flex-nowrap">
@@ -215,7 +215,7 @@ const Testimonials = () => {
                                             className="w-full flex-none snap-center"
                                         >
                                             <div className="flex flex-col items-center px-4">
-                                                <p className="lg:text-2xl text-xl font-bold text-center mb-16 w-full break-words">
+                                                <p className="lg:text-2xl text-xl font-bold text-center mb-8 w-full break-words">
                                                     {testimonial.text}
                                                 </p>
                                                 <div className="flex flex-col items-center text-center">
@@ -227,7 +227,7 @@ const Testimonials = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="flex justify-center gap-2 mt-8">
+                            <div className="flex justify-center gap-2 mt-4">
                                 {testimonials.map((_, index) => (
                                     <button
                                         key={index}

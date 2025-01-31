@@ -6,7 +6,7 @@ const Hero = () => {
     return (
         <section
             className={"w-full bg-bg font-bold flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8 relative"}>
-            <Typewriter className={"lg:text-[56px] text-[48px] text-primary max-w-[800px]"}>
+            <Typewriter className={"lg:text-[56px] text-[36px] text-primary max-w-[800px]"}>
                 Ваша идея, наш опыт,<br/>молниеносный результат
             </Typewriter>
             <motion.p

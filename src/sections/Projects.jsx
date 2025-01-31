@@ -33,7 +33,7 @@ const Projects = ({ full }) => {
                 <p className="font-semibold mb-4 text-primary">
                     Портфолио
                 </p>
-                <h2 className="font-bold text-5xl mb-6">
+                <h2 className="font-bold lg:text-5xl text-4xl mb-6">
                     Наши Недавние Проекты
                 </h2>
                 <p className="font-normal mb-20 text-[#aaaaaa]">
