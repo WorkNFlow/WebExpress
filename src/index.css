@@ -5,6 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -51,11 +57,5 @@ body::-webkit-scrollbar {
     transform: translateZ(-1px) scale(1);
 }
 
-.snap-x {
-    scroll-snap-type: x mandatory;
-}
 
-.snap-center {
-    scroll-snap-align: center;
-}
 
