@@ -17,7 +17,7 @@ const AnimatedModel = ({ fov = 75, camz = 5, scale = 3 }) => {
         return new Promise((resolve, reject) => {
             const loader = new GLTFLoader();
             loader.load(
-                `/public/models/${modelName}.glb`,
+                `/models/${modelName}.glb`,
                 (gltf) => {
                     const model = gltf.scene;
 
