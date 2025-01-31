@@ -28,7 +28,7 @@ const FAQs = () => {
                         initial="hidden"
                         whileInView="visible"
                         variants={containerVariants}>
-                <motion.h2 className="text-5xl font-bold text-center mb-2 text-primary">
+                <motion.h2 className="lg:text-5xl text-4xl font-bold text-center mb-2 text-primary">
                     FAQs
                 </motion.h2>
                 <motion.p className="text-[#aaaaaa] text-center mb-8">
@@ -42,7 +42,7 @@ const FAQs = () => {
                         <motion.div key={index} className="border-b border-secondary pb-6" variants={questionVariants}>
                             <button
                                 onClick={() => toggleQuestion(index)}
-                                className="w-full text-left text-xl font-medium text-text focus:outline-none ml-2"
+                                className="w-full text-left lg:text-xl md:text-[18px] font-medium text-text focus:outline-none ml-2"
                             >
                                 {item.question}
                                 {openIndex === index ? <MdKeyboardArrowDown className="inline ml-2" /> : <MdKeyboardArrowRight className="inline ml-2" />}

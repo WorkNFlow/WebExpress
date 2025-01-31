@@ -9,13 +9,14 @@ const HowItWorks = () => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
-                if (entries[0].isIntersecting) {
+                const entry = entries[0];
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.02) {
                     setIsVisible(true);
-                } else {
+                } else if (entry.intersectionRatio < 0.02) {
                     setIsVisible(false);
                 }
             },
-            { threshold: 0.1 }
+            { threshold: [0.02] }
         );
 
         if (sectionRef.current) {

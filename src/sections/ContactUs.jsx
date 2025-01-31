@@ -17,14 +17,14 @@ const ContactUs = () => {
                         initial="hidden"
                         whileInView="visible"
                         variants={containerVariants}>
-                <motion.h2 className="text-5xl font-bold text-center mb-10 text-primary" variants={itemVariants}>
+                <motion.h2 className="lg:text-5xl text-4xl font-bold text-center mb-10 text-primary" variants={itemVariants}>
                     Свяжитесь с нами
                 </motion.h2>
                 <motion.div className="flex gap-10 lg:gap-20 flex-col lg:flex-row items-center"
                             initial="hidden"
                             whileInView="visible"
                             variants={containerVariants}>
-                    <motion.p className="lg:w-[40vw] text-center text-[18px]" variants={itemVariants}>
+                    <motion.p className="lg:w-[40vw] text-center md:text-[18px]" variants={itemVariants}>
                         Мы готовы ответить на любые ваши вопросы, обсудить ваши идеи и помочь вам в создании идеального
                         веб-сайта. Напишите нам на электронную почту, и мы свяжемся с вами в кратчайшие сроки!
                     </motion.p>
@@ -32,7 +32,7 @@ const ContactUs = () => {
                                 initial="hidden"
                                 whileInView="visible"
                                 variants={containerVariants}>
-                        <motion.p className="text-[20px]" variants={itemVariants}>
+                        <motion.p className="md:text-[20px]" variants={itemVariants}>
                             web.express.pro@gmail.com
                         </motion.p>
                         <motion.a

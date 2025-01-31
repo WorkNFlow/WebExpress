@@ -63,7 +63,7 @@ const Support = () => {
     return (
         <section id={"support"} className={"bg-bg w-full lg:px-16 md:px-12 px-8 py-20 flex justify-center items-center"}>
             <div className={"w-full max-w-[1536px]"}>
-                <h2 className={"text-5xl font-bold text-center mb-2 text-primary"}>
+                <h2 className={"lg:text-5xl text-4xl font-bold text-center mb-2 text-primary"}>
                     Служба поддержки
                 </h2>
                 <p className={"text-[#aaaaaa] text-center mb-8"}>

@@ -4,7 +4,7 @@ import Typewriter from "../components/TypeWriter.jsx";
 const Hero = () => {
     return (
         <section className={"w-full bg-bg font-bold flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8"}>
-            <Typewriter className={"lg:text-[56px] text-[48px] text-primary max-w-[800px]"}>
+            <Typewriter className={"lg:text-[56px] text-[36px] text-primary max-w-[800px]"}>
                 Достигаем целей вместе
             </Typewriter>
             <motion.p
