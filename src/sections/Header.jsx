@@ -70,7 +70,7 @@ const Header = () => {
     return (
         <>
             <header
-                className="w-full flex flex-col justify-center items-center bg-bg lg:bg-opacity-65 lg:backdrop-blur z-20 lg:fixed lg:top-0 lg:left-0">
+                className="w-full flex flex-col justify-center items-center bg-bg lg:bg-opacity-65 lg:backdrop-blur z-50 lg:fixed lg:top-0 lg:left-0 ">
                 <div
                     className="relative w-full h-full px-10 py-6 lg:px-16 lg:py-4 max-lg:gap-3 flex justify-between items-center max-lg:border-b-2 max-lg:border-b-primary">
                     <motion.div

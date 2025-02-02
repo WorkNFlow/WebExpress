@@ -158,7 +158,7 @@ const AnimatedModel = ({ fov = 75, camz = 5, scale = 3 }) => {
                 modelRef.current = newModel;
                 sceneRef.current.add(newModel);
 
-                rotationRef.current = Math.PI / 2; // Reset rotation to 180 degrees
+                rotationRef.current = Math.PI / 2;
                 isAnimatingRef.current = true;
             } catch (err) {
                 console.error('Error switching model:', err);

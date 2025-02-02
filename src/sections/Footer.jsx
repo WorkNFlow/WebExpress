@@ -4,7 +4,7 @@ import Main from "../assets/Main.png"
 
 const Footer = () => {
     return (
-        <footer className={"w-full bg-bg lg:px-16 md:px-12 px-8 px-8 py-20"}>
+        <footer className={"w-full bg-bg lg:px-16 md:px-12 px-8 py-20"}>
             <div className={"w-full flex justify-between items-center mb-20"}>
                 <div className={"flex flex-col"}>
                     <img
