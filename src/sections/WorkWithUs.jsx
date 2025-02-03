@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import {useLanguage} from "../App.jsx"
 import supportFormFields from '../constants/WorkWithUsInfo.js';
 import emailjs from "@emailjs/browser";
 
 const WorkWithUs = ({ isOpen, onClose }) => {
+    const {language} = useLanguage()
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -73,23 +76,29 @@ const WorkWithUs = ({ isOpen, onClose }) => {
                     ✕
                 </button>
                 <h2 className="text-2xl font-bold text-center mb-3 text-primary">
-                    Работать с нами
+                    {language === "ru" ?
+                        "Работать с нами" :
+                        "Work with us"
+                    }
                 </h2>
                 <p className="text-gray-500 text-center mb-8">
-                    Хотите стать частью нашей команды? Мы всегда ищем талантливых людей, увлечённых веб-разработкой.
+                    {language === "ru" ?
+                        "Хотите стать частью нашей команды? Мы всегда ищем талантливых людей, увлечённых веб-разработкой." :
+                        "Want to join our team? We are always looking for talented people passionate about web development."
+                    }
                 </p>
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
                     {supportFormFields.map((field, index) => (
                         <div key={index} className="flex flex-col gap-2">
                             <label className="text-gray-700 ml-1" htmlFor={field.name}>
-                                {field.label}
+                                {field.label[language]}
                             </label>
                             {field.type === 'textarea' ? (
                                 <textarea
                                     name={field.name}
                                     value={formData[field.name]}
                                     onChange={handleChange}
-                                    placeholder={field.placeholder}
+                                    placeholder={field.placeholder[language]}
                                     className="p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-primary bg-bg"
                                     rows="5"
                                     required
@@ -107,7 +116,10 @@ const WorkWithUs = ({ isOpen, onClose }) => {
                                         type="button"
                                         className="p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-primary"
                                     >
-                                        Загрузить резюме
+                                        {language === "ru" ?
+                                            "Загрузить резюме" :
+                                            "Upload resume"
+                                        }
                                     </button>
                                 </div>
                             ) : (
@@ -116,7 +128,7 @@ const WorkWithUs = ({ isOpen, onClose }) => {
                                     name={field.name}
                                     value={formData[field.name]}
                                     onChange={handleChange}
-                                    placeholder={field.placeholder}
+                                    placeholder={field.placeholder[language]}
                                     className="p-3 border border-gray-300 rounded-xl focus:ring-4 focus:ring-primary bg-bg"
                                     required
                                 />
@@ -127,7 +139,10 @@ const WorkWithUs = ({ isOpen, onClose }) => {
                         type="submit"
                         className="px-5 py-3 border border-primary rounded-xl font-medium text-primary hover:bg-hover hover:text-text hover:border-hover"
                     >
-                        {loading ? "Отправляю..." : "Отправить заявку"}
+                        {loading ?
+                            (language === "ru" ? "Отправляю..." : "Sending...") :
+                            (language === "ru" ? "Отправить заявку" : "Submit Application")
+                        }
                     </button>
                 </form>
             </div>

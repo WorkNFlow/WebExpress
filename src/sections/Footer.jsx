@@ -1,8 +1,11 @@
 import {NavLink} from "react-router-dom"
+import {useLanguage} from "../App.jsx"
 import Main from "../assets/Main.png"
 
 
 const Footer = () => {
+    const { language } = useLanguage();
+
     return (
         <footer className={"w-full bg-bg lg:px-16 md:px-12 px-8 py-20"}>
             <div className={"w-full flex justify-between items-center mb-20"}>
@@ -13,7 +16,10 @@ const Footer = () => {
                         className={"mb-8"}
                     />
                     <p className={"font-semibold mb-1"}>
-                        Контакты:
+                        {language === "ru" ?
+                            "Контакты:" :
+                            "Contacts:"
+                        }
                     </p>
                     <a className={"underline"} href={"mailto:web.express.pro@gmail.com"}>
                         web.express.pro@gmail.com
@@ -21,10 +27,30 @@ const Footer = () => {
                 </div>
 
                 <div className={"flex gap-4 md:gap-8 font-medium flex-col md:flex-row"}>
-                    <NavLink to={"/"}>Главная</NavLink>
-                    <NavLink to={"/about"}>О нас</NavLink>
-                    <NavLink to={"/contact"}>Связаться</NavLink>
-                    <NavLink to={"/blogs"}>Блог</NavLink>
+                    <NavLink to={"/"}>
+                        {language === "ru" ?
+                            "Главная" :
+                            "Home"
+                        }
+                    </NavLink>
+                    <NavLink to={"/about"}>
+                        {language === "ru" ?
+                            "О нас" :
+                            "About Us"
+                        }
+                    </NavLink>
+                    <NavLink to={"/contact"}>
+                        {language === "ru" ?
+                            "Связаться" :
+                            "Contact Us"
+                        }
+                    </NavLink>
+                    <NavLink to={"/blogs"}>
+                        {language === "ru" ?
+                            "Блог" :
+                            "Blog"
+                        }
+                    </NavLink>
                 </div>
             </div>
             <div className={"w-full flex flex-col items-center gap-8"}>

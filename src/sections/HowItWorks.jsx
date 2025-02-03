@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import Xarrow from "react-xarrows";
+import {useLanguage} from "../App.jsx"
 import CardsInfo from "../constants/HowItWorksCardsInfo.jsx";
 
 const HowItWorks = () => {
+    const {language} = useLanguage();
+
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef(null);
 
@@ -35,12 +38,12 @@ const HowItWorks = () => {
             {isVisible && (
                 <div className={"w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-6 gap-40 max-w-[1536px] items-center"}>
                     {CardsInfo.map((item, index) => (
-                        <div key={item.title} id={`box${index}`} className={`h-min px-8 py-8 border-4 border-primary text-center rounded-xl flex flex-col items-center justify-center xl:col-span-2 ${item.styles}`}>
+                        <div key={item.title[language]} id={`box${index}`} className={`h-min px-8 py-8 border-4 border-primary text-center rounded-xl flex flex-col items-center justify-center xl:col-span-2 ${item.styles}`}>
                             <h4 className={"font-bold text-[20px] mb-4"}>
-                                {item.title}
+                                {item.title[language]}
                             </h4>
                             <p>
-                                {item.text}
+                                {item.text[language]}
                             </p>
                         </div>
                     ))}

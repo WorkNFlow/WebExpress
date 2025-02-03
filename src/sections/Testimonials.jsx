@@ -1,9 +1,12 @@
 import { useEffect, useState, useRef } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
+import {useLanguage} from "../App.jsx"
 import { getTestimonials } from '../constants/TestimonialsInfo.js';
 
 const Testimonials = () => {
+    const {language} = useLanguage();
+
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -126,14 +129,25 @@ const Testimonials = () => {
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
                 <div className="flex flex-col items-center lg:mb-20 mb-10">
                     <h2 className="text-primary font-bold lg:text-5xl text-4xl lg:mb-6 mb-2">
-                        Отзывы
+                        {language === "ru" ?
+                            "Отзывы" :
+                            "Testimonials"
+                        }
                     </h2>
                     <p className="font-normal text-[#aaaaaa]">
-                        Вот что говорят о нас наши клиенты
+                        {language === "ru" ?
+                            "Вот что говорят о нас наши клиенты" :
+                            "Here's what our clients say about us"
+                        }
                     </p>
                 </div>
                 {loading ? (
-                    <p className="bg-bg text-center font-bold text-3xl">Загрузка...</p>
+                    <p className="bg-bg text-center font-bold text-3xl">
+                        {language === "ru" ?
+                            "Загрузка..." :
+                            "Loading..."
+                        }
+                    </p>
                 ) : (
                     <>
                         {/* Desktop version with buttons */}
@@ -160,7 +174,7 @@ const Testimonials = () => {
                                             }}
                                             className="lg:text-2xl text-xl font-bold text-center w-full"
                                         >
-                                            {testimonials[currentIndex].text}
+                                            {language === "ru" ? testimonials[currentIndex].textru : testimonials[currentIndex].texten}
                                         </motion.div>
                                     </AnimatePresence>
                                 </div>
@@ -185,8 +199,8 @@ const Testimonials = () => {
                                     }}
                                     className="flex flex-col items-center text-center"
                                 >
-                                    <p className="font-medium mb-4">{testimonials[currentIndex].name}</p>
-                                    <p className="font-light text-[#aaaaaa]">{testimonials[currentIndex].job}</p>
+                                    <p className="font-medium mb-4">{language === "ru" ? testimonials[currentIndex].nameru : testimonials[currentIndex].nameen}</p>
+                                    <p className="font-light text-[#aaaaaa]">{language === "ru" ? testimonials[currentIndex].jobru : testimonials[currentIndex].joben}</p>
                                 </motion.div>
                             </AnimatePresence>
                             <div className="flex gap-2 mt-8">
@@ -194,7 +208,7 @@ const Testimonials = () => {
                                     <div
                                         key={index}
                                         className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                                            currentIndex === index ? 'bg-primary' : 'bg-gray-300'
+                                            currentIndex === index ? 'bg-primary' : 'bg-secondary'
                                         }`}
                                     />
                                 ))}
@@ -216,11 +230,11 @@ const Testimonials = () => {
                                         >
                                             <div className="flex flex-col items-center px-4">
                                                 <p className="lg:text-2xl text-xl font-bold text-center mb-8 w-full break-words">
-                                                    {testimonial.text}
+                                                    {language === "ru" ? testimonial.textru : testimonial.texten}
                                                 </p>
                                                 <div className="flex flex-col items-center text-center">
-                                                    <p className="font-medium mb-4">{testimonial.name}</p>
-                                                    <p className="font-light text-[#aaaaaa]">{testimonial.job}</p>
+                                                    <p className="font-medium mb-4">{language === "ru" ? testimonial.nameru : testimonial.nameen}</p>
+                                                    <p className="font-light text-[#aaaaaa]">{language === "ru" ? testimonial.jobru : testimonial.joben}</p>
                                                 </div>
                                             </div>
                                         </div>
