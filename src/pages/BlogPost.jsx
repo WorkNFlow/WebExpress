@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react';
 import {Link, useParams} from 'react-router-dom';
 import {MDXProvider} from '@mdx-js/react';
+import {useLanguage} from "../App.jsx"
 import BlogImage from '../components/BlogImage';
 import {MdKeyboardArrowLeft} from 'react-icons/md';
 import useParallax from "../components/Parallax.jsx"
 
 const BlogPost = () => {
+    const { language } = useLanguage()
+
     useParallax()
     const {id} = useParams();
     const [postData, setPostData] = useState(null);
@@ -80,7 +83,7 @@ const BlogPost = () => {
         <section className="bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-32">
             <div className="max-w-[1536px] mx-auto">
                 <div className={"flex flex-col items-center justify-center mb-8 relative"}>
-                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"} to={"/blogs"}>
+                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"} to={`/${language}/blogs`}>
                         <MdKeyboardArrowLeft className={"text-2xl mb-[1px]"}/>
                         Назад
                     </Link>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {useLanguage} from "../App.jsx"
 import { getAllPosts } from '../utils/mdxUtils';
 import { parse } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
 const Blogs = () => {
+    const {language} = useLanguage()
     const [posts, setPosts] = useState([]);
     const [visiblePosts, setVisiblePosts] = useState(5);
 
@@ -33,7 +35,7 @@ const Blogs = () => {
                     {posts.slice(0, visiblePosts).map((post) => (
                         <Link
                             key={post.slug}
-                            to={`/blogs/${post.slug}`}
+                            to={`/${language}/blogs/${post.slug}`}
                             className="p-6 max-sm:pt-14 bg-white rounded-lg flex justify-between shadow-blog shadow-primary hover:shadow-window hover:shadow-primary transition-shadow relative"
                         >
                             <div className="w-full pr-4">

@@ -27,25 +27,25 @@ const Footer = () => {
                 </div>
 
                 <div className={"flex gap-4 md:gap-8 font-medium flex-col md:flex-row"}>
-                    <NavLink to={"/"}>
+                    <NavLink to={`/${language}/`}>
                         {language === "ru" ?
                             "Главная" :
                             "Home"
                         }
                     </NavLink>
-                    <NavLink to={"/about"}>
+                    <NavLink to={`/${language}/about`}>
                         {language === "ru" ?
                             "О нас" :
                             "About Us"
                         }
                     </NavLink>
-                    <NavLink to={"/contact"}>
+                    <NavLink to={`/${language}/contact`}>
                         {language === "ru" ?
                             "Связаться" :
                             "Contact Us"
                         }
                     </NavLink>
-                    <NavLink to={"/blogs"}>
+                    <NavLink to={`/${language}/blogs`}>
                         {language === "ru" ?
                             "Блог" :
                             "Blog"

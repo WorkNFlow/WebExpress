@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {useLanguage} from "../App.jsx"
 import { getTestimonials } from '../constants/TestimonialsInfo.js';
 
+// TODO: Change english reviews
+
 const Testimonials = () => {
     const {language} = useLanguage();
 
