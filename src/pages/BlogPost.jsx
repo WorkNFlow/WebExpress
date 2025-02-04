@@ -7,7 +7,7 @@ import {MdKeyboardArrowLeft} from 'react-icons/md';
 import useParallax from "../components/Parallax.jsx"
 
 const BlogPost = () => {
-    const { language } = useLanguage()
+    const {language} = useLanguage()
 
     useParallax()
     const {id} = useParams();
@@ -25,10 +25,10 @@ const BlogPost = () => {
     useEffect(() => {
         const fetchPost = async () => {
             try {
-                const postModule = await import(`../content/posts/${id}.mdx`);
+                // Изменяем путь импорта для учета языка
+                const postModule = await import(`../content/posts/${language}/${id}.mdx`);
                 const images = postModule.default.toString().match(/name="(.*?)"/g) || [];
 
-                // Инициализируем состояние загрузки для всех изображений
                 const initialImagesLoading = images.reduce((acc, img) => {
                     const name = img.match(/name="(.*?)"/)[1];
                     acc[name] = false;
@@ -44,13 +44,27 @@ const BlogPost = () => {
                 });
             } catch (error) {
                 console.error('Error loading post:', error);
+                // Добавляем обработку случая, когда пост не найден
+                setPostData(null);
             } finally {
                 setLoading(false);
             }
         };
 
         fetchPost();
-    }, [id]);
+    }, [id, language]); // Добавляем language в зависимости
+
+// Модифицируем сообщение об ошибке
+    if (!postData) {
+        return (
+            <section className="bg-bg w-full h-screen flex items-center justify-center text-xl">
+                {language === "ru"
+                    ? "Пост не найден"
+                    : "Post not found"
+                }
+            </section>
+        );
+    }
 
     // Проверяем, все ли изображения загружены
     const allImagesLoaded = postData
@@ -60,12 +74,11 @@ const BlogPost = () => {
     if (loading || !allImagesLoaded) {
         return (
             <section className="bg-bg w-full h-screen flex items-center justify-center text-5xl">
-                Загрузка...
+                {language === "ru" ?
+                    "Загрузка..." :
+                    "Loading..."
+                }
             </section>);
-    }
-
-    if (!postData) {
-        return <div>Post not found</div>;
     }
 
     const components = {
@@ -83,9 +96,13 @@ const BlogPost = () => {
         <section className="bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-32">
             <div className="max-w-[1536px] mx-auto">
                 <div className={"flex flex-col items-center justify-center mb-8 relative"}>
-                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"} to={`/${language}/blogs`}>
+                    <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"}
+                          to={`/${language}/blogs`}>
                         <MdKeyboardArrowLeft className={"text-2xl mb-[1px]"}/>
-                        Назад
+                        {language === "ru" ?
+                            "Назад" :
+                            "Back"
+                        }
                     </Link>
                     <div className={"h-7 p-7"}/>
                     {postData.frontmatter && (

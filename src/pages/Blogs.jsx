@@ -10,9 +10,11 @@ const Blogs = () => {
     const [posts, setPosts] = useState([]);
     const [visiblePosts, setVisiblePosts] = useState(5);
 
+    // В useEffect добавляем language как зависимость
     useEffect(() => {
         const fetchPosts = async () => {
-            const allPosts = await getAllPosts();
+            // Передаем текущий язык в getAllPosts
+            const allPosts = await getAllPosts(language);
             const sortedPosts = allPosts.sort((a, b) => {
                 const dateA = parse(a.frontmatter.date, 'dd.MM.yyyy', new Date(), { locale: ru });
                 const dateB = parse(b.frontmatter.date, 'dd.MM.yyyy', new Date(), { locale: ru });
@@ -21,7 +23,7 @@ const Blogs = () => {
             setPosts(sortedPosts);
         };
         fetchPosts();
-    }, []);
+    }, [language]); // Добавляем language в зависимости
 
     const loadMorePosts = () => {
         setVisiblePosts((prevVisiblePosts) => prevVisiblePosts + 5);
@@ -30,7 +32,12 @@ const Blogs = () => {
     return (
         <section className="w-full bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-40">
             <div className="max-w-[1536px] mx-auto">
-                <h1 className="lg:text-5xl text-4xl font-bold mb-12">Блог</h1>
+                <h1 className="lg:text-5xl text-4xl font-bold mb-12">
+                    {language === "ru" ?
+                        "Блог" :
+                        "Blog"
+                    }
+                </h1>
                 <div className="space-y-8">
                     {posts.slice(0, visiblePosts).map((post) => (
                         <Link
@@ -57,7 +64,10 @@ const Blogs = () => {
                         onClick={loadMorePosts}
                         className="mt-8 px-6 py-3 bg-primary text-white rounded-lg hover:bg-hover transition-colors"
                     >
-                        Загрузить еще
+                        {language === "ru" ?
+                            "Загрузить еще" :
+                            "Load more"
+                        }
                     </button>
                 )}
             </div>
