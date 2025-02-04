@@ -185,7 +185,7 @@ const Header = () => {
                                                         backgroundPosition: 'left'
                                                     }}
                                                 >
-                                                    <NavLink to={page.link} className="flex gap-3 p-2 cursor-pointer"
+                                                    <NavLink to={page.link[language]} className="flex gap-3 p-2 cursor-pointer"
                                                              onClick={handleNavLinkClick}>
                                                         {page.icon}
                                                         <div>
