@@ -16,31 +16,30 @@ const Header = () => {
     const {isNavOpen, toggleNav, setIsNavOpen} = useContext(NavContext);
     const navRef = useRef(null); // ref для nav элемента
     const buttonRef = useRef(null); // ref для кнопки
+    const menuRef = useRef(null); // ref для меню
     const {scrollYProgress} = useScroll();
     const scaleX = useSpring(scrollYProgress, {
         stiffness: 100,
         damping: 30,
         restDelta: 0.001
     });
-    console.log(isNavOpen)
+    console.log("nav", isNavOpen)
 
     // Добавляем обработчик кликов вне nav
     useEffect(() => {
         const handleClickOutside = (event) => {
-            // Проверяем, что клик был не по nav и не по кнопке открытия
             if (navRef.current &&
                 !navRef.current.contains(event.target) &&
-                !buttonRef.current.contains(event.target)) {
+                !buttonRef.current.contains(event.target) &&
+                !menuRef.current.contains(event.target)) {
                 setIsNavOpen(false);
             }
         };
 
-        // Добавляем обработчик только когда nav открыт
         if (isNavOpen) {
             document.addEventListener('mousedown', handleClickOutside);
         }
 
-        // Очищаем обработчик при размонтировании
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
@@ -68,19 +67,19 @@ const Header = () => {
         setIsNavOpen(false);
     };
 
-    return (
+
+        return (
         <>
-            <header
-                className="w-full flex flex-col justify-center items-center bg-bg lg:bg-opacity-65 lg:backdrop-blur z-50 lg:fixed lg:top-0 lg:left-0 ">
-                <div
-                    className="relative w-full h-full px-10 py-6 lg:px-16 lg:py-4 max-lg:gap-3 flex justify-between items-center max-lg:border-b-2 max-lg:border-b-primary">
+            <header className="fixed top-0 left-0 w-full bg-bg lg:bg-opacity-65 lg:backdrop-blur z-[100]">
+                <div className="relative w-full h-full px-6 py-4 lg:px-16 lg:py-4 flex items-center justify-between border-b-2 border-b-primary lg:border-none">
                     <motion.div
                         className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-[0%] lg:block hidden"
                         style={{scaleX}}
                     />
 
+                    {/* Desktop Navigation and Logo */}
                     <motion.div
-                        className="flex flex-col lg:flex-row lg:items-center max-lg:gap-3 items-start justify-between font-medium w-full max-w-[380px]"
+                        className="hidden lg:flex items-center gap-8"
                         initial="hidden"
                         animate="visible"
                         variants={{
@@ -93,42 +92,68 @@ const Header = () => {
                     >
                         <motion.div variants={linkVariants}>
                             <NavLink to="/" onClick={handleNavLinkClick}>
-                                <img src={Small} alt={"A Logo"} className="h-10"/>
+                                <img src={Small} alt="A Logo" className="h-10" />
                             </NavLink>
                         </motion.div>
                         <motion.div variants={linkVariants}>
                             <NavLink to={`/${language}/about`} onClick={handleNavLinkClick}>
-                                {language === "ru" ?
-                                    "О нас" :
-                                    "About Us"
-                                }
+                                {language === "ru" ? "О нас" : "About Us"}
                             </NavLink>
                         </motion.div>
                         <motion.div variants={linkVariants}>
                             <NavLink to={`/${language}/blogs`} onClick={handleNavLinkClick}>
-                                {language === "ru" ?
-                                    "Блог" :
-                                    "Blog"
-                                }
+                                {language === "ru" ? "Блог" : "Blog"}
                             </NavLink>
                         </motion.div>
                         <motion.div
                             ref={buttonRef}
                             onClick={toggleNav}
                             className="flex gap-0.5 items-center justify-center cursor-pointer"
-                            variants={linkVariants}>
+                            variants={linkVariants}
+                        >
                             <button>
-                                {language === "ru" ?
-                                    "Больше" :
-                                    "More"
-                                }
+                                {language === "ru" ? "Больше" : "More"}
                             </button>
                             {isNavOpen ? <MdKeyboardArrowDown/> : <MdKeyboardArrowRight/>}
                         </motion.div>
                     </motion.div>
 
+                    {/* Mobile Layout */}
+                    <div className="lg:hidden flex items-center w-full">
+                        {/* Mobile Menu Button */}
+                        <button
+                            ref={menuRef}
+                            onClick={toggleNav}
+                            className="w-8 h-8 flex flex-col justify-center items-center z-[102]"
+                        >
+                            <div className="w-6 h-6 relative">
+                                <span className={`absolute w-full h-0.5 bg-text transition-all duration-300 ${
+                                    isNavOpen
+                                        ? 'rotate-45 top-1/2 -translate-y-1/2'
+                                        : 'top-1/4 -translate-y-1/2'
+                                }`} />
+                                <span className={`absolute w-full h-0.5 bg-text top-1/2 -translate-y-1/2 transition-opacity duration-300 ${
+                                    isNavOpen ? 'opacity-0' : 'opacity-100'
+                                }`} />
+                                <span className={`absolute w-full h-0.5 bg-text transition-all duration-300 ${
+                                    isNavOpen
+                                        ? '-rotate-45 top-1/2 -translate-y-1/2'
+                                        : 'top-3/4 -translate-y-1/2'
+                                }`} />
+                            </div>
+                        </button>
+
+                        {/* Mobile Logo */}
+                        <div className="absolute left-1/2 -translate-x-1/2">
+                            <NavLink to="/" onClick={handleNavLinkClick}>
+                                <img src={Small} alt="A Logo" className="h-10" />
+                            </NavLink>
+                        </div>
+                    </div>
+
+                    {/* Right section with buttons */}
                     <motion.div
-                        className="flex flex-col lg:flex-row lg:items-center items-end max-lg:gap-10 w-full lg:gap-8 justify-end"
+                        className="flex items-center gap-4"
                         initial="hidden"
                         animate="visible"
                         variants={{
@@ -139,42 +164,41 @@ const Header = () => {
                             }
                         }}
                     >
-                        <motion.button variants={linkVariants} onClick={toggleModal}
-                                       className="px-5 py-2 border rounded-xl font-medium min-h-[45px] text-nowrap">
-                            {language === "ru" ?
-                                "Работать с нами" :
-                                "Work with us"
-                            }
+                        <motion.button
+                            variants={linkVariants}
+                            onClick={toggleModal}
+                            className="px-4 py-2 border rounded-xl font-medium text-sm md:text-base text-nowrap"
+                        >
+                            {language === "ru" ? "Работать с нами" : "Work with us"}
                         </motion.button>
-                        <motion.div variants={linkVariants}>
-                            <Link to={`/${language}/contact`}
-                                  className="px-5 py-3 rounded-xl text-center border text-primary cursor-pointer font-medium min-h-[45px] text-nowrap">
-                                {language === "ru" ?
-                                    "Связаться с нами" :
-                                    "Contact Us"
-                                }
-                            </Link>
-                        </motion.div>
+                        <Link
+                            to={`/${language}/contact`}
+                            className="hidden lg:block px-5 py-3 rounded-xl text-center border text-primary cursor-pointer font-medium text-nowrap"
+                        >
+                            {language === "ru" ? "Связаться с нами" : "Contact Us"}
+                        </Link>
                     </motion.div>
                 </div>
 
+                {/* Mobile Navigation Menu */}
                 <AnimatePresence>
                     {isNavOpen && (
                         <motion.nav
                             ref={navRef}
-                            className="w-full bg-bg bg-opacity-95 pt-8 flex flex-col absolute lg:top-[74px] top-[234px] left-0 z-30"
-                            initial={{y: -25, opacity: 0}}
-                            animate={{y: 0, opacity: 1}}
-                            transition={{duration: 0.5}}
+                            className="fixed top-[72px] left-0 w-full  bg-bg overflow-y-auto z-[101]"
+                            initial={{opacity: 0}}
+                            animate={{opacity: 1}}
+                            exit={{opacity: 0}}
+                            transition={{duration: 0.2}}
                         >
-                            <div className={"flex flex-col lg:flex-row gap-10 lg:gap-[25vw] px-16"}>
+                            <div className="flex flex-col lg:flex-row gap-10 lg:gap-[25vw] px-6 lg:px-16 pt-8">
                                 {navInfo.map((item, index) => (
-                                    <div key={index} className={"flex flex-col justify-evenly"}>
+                                    <div key={index} className="flex flex-col justify-evenly">
                                         <p className="font-semibold text-[14px] mb-4">{item.title[language]}</p>
                                         <ul className="flex flex-col gap-2">
                                             {item.links.map((page, index2) => (
                                                 <motion.li
-                                                    className={"rounded"}
+                                                    className="rounded"
                                                     key={index2}
                                                     initial="initial"
                                                     whileHover="hover"
@@ -185,8 +209,11 @@ const Header = () => {
                                                         backgroundPosition: 'left'
                                                     }}
                                                 >
-                                                    <NavLink to={page.link[language]} className="flex gap-3 p-2 cursor-pointer"
-                                                             onClick={handleNavLinkClick}>
+                                                    <NavLink
+                                                        to={page.link[language]}
+                                                        className="flex gap-3 p-2 cursor-pointer"
+                                                        onClick={handleNavLinkClick}
+                                                    >
                                                         {page.icon}
                                                         <div>
                                                             <p className="font-semibold">{page.name[language]}</p>
@@ -199,25 +226,36 @@ const Header = () => {
                                     </div>
                                 ))}
                             </div>
-                            {language === "ru" ?
-                                <p className={"bg-[#2e2e2e] text-primary w-full text-start px-16 py-4 mt-4"}>
-                                    Готовы запустить свой проект? <NavLink className={"underline cursor-pointer"}
-                                                                           to={"/contact"} onClick={handleNavLinkClick}>
-                                    Свяжитесь с нами</NavLink>
-                                </p> :
-                                <p className={"bg-[#2e2e2e] text-primary w-full text-start px-16 py-4 mt-4"}>
-                                    Ready to get your project up and running? <NavLink
-                                    className={"underline cursor-pointer"}
-                                    to={"/contact"} onClick={handleNavLinkClick}>Contact Us</NavLink>
-                                </p>
-                            }
+                            <div className="bg-[#2e2e2e] text-primary w-full text-start px-6 lg:px-16 py-4 mt-4">
+                                {language === "ru" ? (
+                                    <p>
+                                        Готовы запустить свой проект?{" "}
+                                        <NavLink
+                                            className="underline cursor-pointer"
+                                            to="/contact"
+                                            onClick={handleNavLinkClick}
+                                        >
+                                            Свяжитесь с нами
+                                        </NavLink>
+                                    </p>
+                                ) : (
+                                    <p>
+                                        Ready to get your project up and running?{" "}
+                                        <NavLink
+                                            className="underline cursor-pointer"
+                                            to="/contact"
+                                            onClick={handleNavLinkClick}
+                                        >
+                                            Contact Us
+                                        </NavLink>
+                                    </p>
+                                )}
+                            </div>
                         </motion.nav>
                     )}
                 </AnimatePresence>
             </header>
-            <WorkWithUs
-                isOpen={isModalOpen} onClose={toggleModal}
-            />
+            <WorkWithUs isOpen={isModalOpen} onClose={toggleModal} />
         </>
     );
 };
