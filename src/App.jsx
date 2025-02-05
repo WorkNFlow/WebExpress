@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react"
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from "react-router-dom"
 import About from "./pages/About.jsx"
 import BlogPost from "./pages/BlogPost.jsx"
 import Blogs from "./pages/Blogs.jsx"
@@ -9,15 +9,12 @@ import Home from "./pages/Home.jsx"
 import Header from "./sections/Header.jsx"
 import NotFound from "./pages/NotFound.jsx"
 
-// Language Context for managing site-wide language
 export const LanguageContext = createContext({
     language: 'en',
     setLanguage: () => {}
 });
 
-// Language Provider Component
 export const LanguageProvider = ({ children }) => {
-    // Detect browser language and set initial language
     const getBrowserLanguage = () => {
         const browserLang = navigator.language.split('-')[0];
         return browserLang === 'ru' ? 'ru' : 'en';
@@ -25,7 +22,7 @@ export const LanguageProvider = ({ children }) => {
 
     const [language, setLanguage] = useState(getBrowserLanguage());
 
-    // Update language when URL changes
+    // Этот useEffect теперь будет выполняться только при первом рендере
     useEffect(() => {
         const path = window.location.pathname;
         const langMatch = path.match(/^\/([a-z]{2})/);
@@ -35,10 +32,15 @@ export const LanguageProvider = ({ children }) => {
                 setLanguage(urlLang);
             }
         }
-    }, []);
+    }, []); // Пустой массив зависимостей
+
+    const handleLanguageChange = (newLang) => {
+        setLanguage(newLang);
+        // URL будет обновляться через I18nRoute
+    };
 
     return (
-        <LanguageContext.Provider value={{ language, setLanguage }}>
+        <LanguageContext.Provider value={{ language, setLanguage: handleLanguageChange }}>
             {children}
         </LanguageContext.Provider>
     )
@@ -66,26 +68,18 @@ export const NavProvider = ({ children }) => {
 
 // Internationalized Route Wrapper
 const I18nRoute = ({ children }) => {
-    const { language, setLanguage } = useLanguage();
+    const { language } = useLanguage();
     const location = useLocation();
-
-    // Extract language from path
+    const navigate = useNavigate();
     const pathLanguage = location.pathname.split('/')[1];
 
-    // Update language if URL language differs from current language
     useEffect(() => {
-        if (pathLanguage === 'ru' || pathLanguage === 'en') {
-            // If URL language is different, update language state
-            if (pathLanguage !== language) {
-                setLanguage(pathLanguage);
-            }
+        if (pathLanguage !== language) {
+            // Заменяем текущий язык в URL на новый
+            const newPath = location.pathname.replace(/^\/[a-z]{2}/, `/${language}`);
+            navigate(newPath, { replace: true });
         }
-    }, [pathLanguage, language, setLanguage]);
-
-    // If no language in path, redirect to language-specific route
-    if (!['ru', 'en'].includes(pathLanguage)) {
-        return <Navigate to={`/${language}`} replace />;
-    }
+    }, [language, pathLanguage, location.pathname, navigate]);
 
     return children;
 }

@@ -232,7 +232,7 @@ const Header = () => {
                                         Готовы запустить свой проект?{" "}
                                         <NavLink
                                             className="underline cursor-pointer"
-                                            to="/contact"
+                                            to={`/${language}contact`}
                                             onClick={handleNavLinkClick}
                                         >
                                             Свяжитесь с нами
@@ -243,7 +243,7 @@ const Header = () => {
                                         Ready to get your project up and running?{" "}
                                         <NavLink
                                             className="underline cursor-pointer"
-                                            to="/contact"
+                                            to={`/${language}contact`}
                                             onClick={handleNavLinkClick}
                                         >
                                             Contact Us
