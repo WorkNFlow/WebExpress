@@ -30,7 +30,7 @@ const Blogs = () => {
     };
 
     return (
-        <section className="w-full bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-40">
+        <section className="w-full bg-bg lg:px-16 md:px-12 px-8 py-20 pt-32 lg:pt-40">
             <div className="max-w-[1536px] mx-auto">
                 <h1 className="lg:text-5xl text-4xl font-bold mb-12">
                     {language === "ru" ?
