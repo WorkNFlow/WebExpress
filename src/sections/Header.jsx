@@ -70,7 +70,7 @@ const Header = () => {
 
         return (
         <>
-            <header className="fixed top-0 left-0 w-full bg-bg lg:bg-opacity-65 lg:backdrop-blur z-[100]">
+            <header className="fixed top-0 left-0 w-full bg-bg lg:bg-opacity-65 lg:backdrop-blur z-40">
                 <div className="relative w-full h-full px-6 py-4 lg:px-16 lg:py-4 flex items-center justify-between border-b-2 border-b-primary lg:border-none">
                     <motion.div
                         className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary origin-[0%] lg:block hidden"
