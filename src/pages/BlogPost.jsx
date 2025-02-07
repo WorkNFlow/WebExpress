@@ -93,7 +93,7 @@ const BlogPost = () => {
     };
 
     return (
-        <section className="bg-bg lg:px-16 md:px-12 px-8 py-20 lg:pt-32">
+        <section className="bg-bg lg:px-16 md:px-12 px-8 py-10 pt-28 lg:pt-32">
             <div className="max-w-[1536px] mx-auto">
                 <div className={"flex flex-col items-center justify-center mb-8 relative"}>
                     <Link className={"flex items-center cursor-pointer font-semibold absolute top-2 left-0 lg:left-7"}

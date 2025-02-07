@@ -243,7 +243,7 @@ const Header = () => {
                                         Ready to get your project up and running?{" "}
                                         <NavLink
                                             className="underline cursor-pointer"
-                                            to={`/${language}contact`}
+                                            to={`/${language}/contact`}
                                             onClick={handleNavLinkClick}
                                         >
                                             Contact Us
