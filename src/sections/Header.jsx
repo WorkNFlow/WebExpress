@@ -119,7 +119,7 @@ const Header = () => {
                     </motion.div>
 
                     {/* Mobile Layout */}
-                    <div className="lg:hidden flex items-center w-full">
+                    <div className="lg:hidden flex items-center w-full gap-8">
                         {/* Mobile Menu Button */}
                         <button
                             ref={menuRef}
@@ -144,7 +144,7 @@ const Header = () => {
                         </button>
 
                         {/* Mobile Logo */}
-                        <div className="absolute left-1/2 -translate-x-1/2">
+                        <div className="">
                             <NavLink to="/" onClick={handleNavLinkClick}>
                                 <img src={Small} alt="A Logo" className="h-10" />
                             </NavLink>
