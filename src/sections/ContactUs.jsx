@@ -16,7 +16,7 @@ const ContactUs = () => {
 
     return (
         <section className="w-full bg-bg flex items-center justify-center lg:px-16 md:px-12 px-8 pb-40">
-            <motion.div className="max-w-[1536px]"
+            <motion.div className="max-w-[1536px] z-20"
                         initial="hidden"
                         whileInView="visible"
                         variants={containerVariants}>

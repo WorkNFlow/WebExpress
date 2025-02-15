@@ -19,9 +19,9 @@ const Hero = () => {
 
     return (
         <section
-            className="w-full bg-bg font-bold relative flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8 z-20">
-            <AnimatedModel name={"code"} fov={20} camz={10} scale={scale}/>
-            <div className="relative z-10 flex flex-col items-center"> {/* Wrapper for content to be above the model */}
+            className="w-full bg-bg font-bold relative flex flex-col items-center justify-center text-center h-screen lg:px-16 md:px-12 px-8">
+            <AnimatedModel name={"code"} fov={20} camz={10} scale={scale} />
+            <div className="relative flex flex-col items-center z-20"> {/* Wrapper for content to be above the model */}
                 {language === "ru" ?
                     <Typewriter className="lg:text-[56px] text-[36px] text-primary max-w-[800px]">
                         Веб разработка,<br/> которая опережает время

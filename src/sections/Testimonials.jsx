@@ -129,7 +129,7 @@ const Testimonials = () => {
     return (
         <section id="testimonials" className="w-full overflow-hidden bg-bg lg:px-16 md:px-12 px-8 lg:py-20 py-10">
             <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
-                <div className="flex flex-col items-center lg:mb-20 mb-10">
+                <div className="flex flex-col items-center lg:mb-20 mb-10 z-20">
                     <h2 className="text-primary font-bold lg:text-5xl text-4xl lg:mb-6 mb-2">
                         {language === "ru" ?
                             "Отзывы" :
@@ -153,7 +153,7 @@ const Testimonials = () => {
                 ) : (
                     <>
                         {/* Desktop version with buttons */}
-                        <div className="hidden md:flex flex-col items-center justify-between w-full">
+                        <div className="hidden md:flex flex-col items-center justify-between w-full z-20">
                             <div className="flex items-center w-full justify-between mb-16 gap-4">
                                 <button
                                     onClick={handlePrev}
@@ -218,7 +218,7 @@ const Testimonials = () => {
                         </div>
 
                         {/* Mobile version with infinite scroll */}
-                        <div className="md:hidden w-full">
+                        <div className="md:hidden w-full z-20">
                             <div
                                 ref={scrollContainerRef}
                                 className="flex w-full overflow-x-auto snap-x snap-mandatory scroll-container"

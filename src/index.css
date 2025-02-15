@@ -5,6 +5,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bg-color: #202020;  /* Укажите здесь цвет фона в формате hex */
+}
+
 html, body {
     overflow-x: hidden;
     width: 100%;
@@ -69,3 +73,37 @@ body::-webkit-scrollbar {
 }
 
 
+
+/*BG Circles*/
+
+.background-circles {
+    position: relative;
+    overflow: hidden;
+}
+
+.background-circles::before,
+.background-circles::after {
+    content: '';
+    position: absolute;
+    width: 25vw;  /* Adjust size as needed */
+    min-width: 250px;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 10;
+    background-repeat: repeat-y;
+    background-size: contain;
+}
+
+.background-circles::before {
+    margin-top: 25vw;
+    left: 0;  /* Adjust position as needed */
+    background-image: url('/src/assets/left.png');
+    transform: scaleX(-1);  /* Flip horizontally */
+}
+
+.background-circles::after {
+    right: 0;  /* Adjust position as needed */
+    background-image: url('/src/assets/left.png');
+}

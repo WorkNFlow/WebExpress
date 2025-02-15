@@ -6,7 +6,7 @@ import WhyUs from "../sections/WhyUs.jsx"
 
 const About = () => {
     return (
-        <main>
+        <main className={"background-circles"}>
             <HeroAbout />
             <WhyUs />
             <OurTeam />

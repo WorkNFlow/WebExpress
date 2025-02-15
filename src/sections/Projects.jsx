@@ -32,7 +32,7 @@ const Projects = ({ full }) => {
 
     return (
         <section id="projects" className="w-full bg-bg lg:px-16 md:px-12 px-8 lg:py-20 py-10 flex items-center justify-center">
-            <div className="w-full max-w-[1536px] flex flex-col items-center">
+            <div className="w-full max-w-[1536px] flex flex-col items-center z-20">
                 <p className="font-semibold mb-4 text-primary">
                     {language === "ru" ?
                         "Портфолио" :

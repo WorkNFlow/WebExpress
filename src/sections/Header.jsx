@@ -150,7 +150,6 @@ const Header = () => {
                             </NavLink>
                         </div>
                     </div>
-
                     {/* Right section with buttons */}
                     <motion.div
                         className="flex items-center gap-4"
@@ -173,7 +172,7 @@ const Header = () => {
                         </motion.button>
                         <Link
                             to={`/${language}/contact`}
-                            className="hidden lg:block px-5 py-3 rounded-xl text-center border text-primary cursor-pointer font-medium text-nowrap"
+                            className="hidden lg:block px-4 py-2 rounded-xl text-center border text-primary cursor-pointer font-medium text-nowrap"
                         >
                             {language === "ru" ? "Связаться с нами" : "Contact Us"}
                         </Link>

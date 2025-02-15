@@ -6,7 +6,7 @@ const OurTeam = () => {
 
     return (
         <section className={"w-full min-h-screen bg-bg lg:px-16 md:px-12 px-8 py-40 flex justify-center items-center"}>
-            <div className={"max-w-7xl w-full h-full flex flex-col lg:flex-row gap-16 justify-evenly items-stretch"}>
+            <div className={"max-w-7xl w-full h-full flex flex-col lg:flex-row gap-16 justify-evenly items-stretch z-20"}>
                 <motion.div
                     initial={{ opacity: 0, x: -100 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -31,7 +31,7 @@ const OurTeam = () => {
                     initial={{ opacity: 0, x: 100 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ type: "spring", stiffness: 100, damping: 10 }}
-                    className={"lg:flex-1 flex items-center flex-col border-4 border-primary border-dashed px-8 py-8 rounded-xl"}>
+                    className={"lg:flex-1 flex items-center flex-col border-4 border-primary border-dashed px-8 py-8 rounded-xl z-20"}>
                     <h2 className={"lg:text-4xl text-3xl font-bold text-primary mb-8"}>
                         {language === "ru" ?
                             "Наши технологии" :

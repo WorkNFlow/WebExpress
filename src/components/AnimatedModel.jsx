@@ -170,7 +170,7 @@ const AnimatedModel = ({ fov = 75, camz = 5, scale = 3 }) => {
     }, [currentModel, loadModel]);
 
     return (
-        <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+        <div className="absolute inset-0 w-full h-full" style={{ zIndex: 15 }}>
             {error ? (
                 <div className="absolute inset-0 flex items-center justify-center text-red-500">
                     {error}

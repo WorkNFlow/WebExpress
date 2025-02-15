@@ -6,7 +6,7 @@ import WorkWithUs from "../sections/WorkWithUs.jsx"
 
 const Contact = () => {
     return (
-        <main>
+        <main className={"background-circles overflow-hidden"}>
             <HeroContact />
             <ContactUs />
             <FAQs />
